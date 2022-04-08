@@ -1,0 +1,77 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "BR Vehicles Rent",
+        "description": "API de aluguel de veículos",
+        "version": "1.0.0",
+        "contact": {
+            "email": "andrepc690@gmail.com"
+        }
+    },
+    "paths": {
+        "/categories": {
+            "post": {
+                "tags": ["Category"],
+                "summary": "Criar categoria",
+                "description": "Cria uma categoria de veículo",
+                "requestBody": {
+                    "content": {
+                        "application-json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "SUV",
+                                    "description": "Veículo utilitário esportivo"
+                                }
+                            }
+                        }
+                    }
+                },
+                "response": {
+                    "201": {
+                        "description": "created"
+                    },
+                    "500": {
+                        "description": "category already exists"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Category"],
+                "summary": "Listar categoria(s)",
+                "description": "Busca e lista todas as categorias existentes",
+                "response": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application-json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type":"string"
+                                            },
+                                            "description": {
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

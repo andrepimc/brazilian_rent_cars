@@ -7,7 +7,7 @@ import { listCategoriesController } from '../modules/cars/usecases/listCategorie
 
 const categoriesRoutes = Router();
 const upload = multer({
-  dest: './temp',
+  dest: './tmp',
 });
 
 
