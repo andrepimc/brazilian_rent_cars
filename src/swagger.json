@@ -11,7 +11,7 @@
     "paths": {
         "/categories": {
             "post": {
-                "tags": ["Category"],
+                "tags": ["Categorys"],
                 "summary": "Criar categoria",
                 "description": "Cria uma categoria de veículo",
                 "requestBody": {
@@ -35,7 +35,7 @@
                         }
                     }
                 },
-                "response": {
+                "responses": {
                     "201": {
                         "description": "created"
                     },
@@ -70,6 +70,70 @@
                             }
                         }
                     }
+                }
+            }
+        },
+        "/categories/import": {
+            "post": {
+                "tags":["Categorys"],
+                "summary":"Upload new category",
+                "description":"Upload new category",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type":"object",
+                                "properties": {
+                                    "file": {
+                                        "type":"string",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "created"
+                    }
+                }
+            }
+        },
+        "/specfications": {
+            "post": {
+                "tags": ["Specifications"],
+                "summary": "Criar especificação",
+                "description": "Crie uma nova especificação",
+                "requestBody": {
+                    "content":{
+                        "application-json":{
+                            "schema":{
+                                "$ref": "#/definitions/Specification"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201":{
+                        "description": "created"
+                    },
+                    "500":{
+                        "description": "specification already exists"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Specification": {
+            "type":"object",
+            "properties": {
+                "name": {
+                    "type":"string"
+                },
+                "description": {
+                    "type":"string"
                 }
             }
         }
